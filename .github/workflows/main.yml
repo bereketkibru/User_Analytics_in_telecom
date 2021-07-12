@@ -1,0 +1,21 @@
+name: User_Analytics_in_telecom
+on: 
+  push:
+    branches:
+    - main
+jobs:
+  run:
+    runs-on: windows 10
+    container: 
+    steps:
+    - uses: actions/checkout@v2
+    - name: cml_run
+      run: | 
+        pip install -r requirements.txt
+        python scripts/script.py
+
+    - name: run-tests
+      run: |
+        python -m unittest tests.test_script
+
+        
